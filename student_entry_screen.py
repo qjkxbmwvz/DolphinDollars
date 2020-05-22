@@ -11,6 +11,7 @@ try:
     import Tkinter as tk
 except ImportError:
     import tkinter as tk
+import tkinter.messagebox
 import login_screen
 import student_home_screen
 
