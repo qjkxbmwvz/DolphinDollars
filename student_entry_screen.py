@@ -17,9 +17,10 @@ import student_home_screen
 
 class StudentEntryScreen(tk.Frame):
     '''This class populates the window with entry screen stuff.'''
-    def __init__(self, master):
+    def __init__(self, master, student_id):
         tk.Frame.__init__(self, master)
 
+        self.student_id = student_id
         self.configure(bg="white")
 
         font10 = "-family {Noto Sans} -size 18"
@@ -59,7 +60,24 @@ class StudentEntryScreen(tk.Frame):
 
     def authenticate(self):
         '''Contacts the database to authenticate the employee.'''
-        self.master.switch_frame(student_home_screen.StudentHomeScreen)
+        student_id = self.student_id_entry.get()
+
+        if not student_id:
+            tk.messagebox.showerror("Enter a Student ID",
+                                    "Please enter a student ID to proceed.")
+            return
+
+        cursor = self.master.execute(
+            "SELECT AuthenticateStudent({});".format(student_id))
+
+        for i in cursor:
+            for j in i:
+                if j == 1:
+                    self.master.switch_frame(student_home_screen.StudentHomeScreen, student_id)
+                else:
+                    tk.messagebox.showerror("Student ID Not Found",
+                                            "Please check the entered ID and try again.")
+                    return
 
     def log_out(self):
         '''Logs the employee out.'''

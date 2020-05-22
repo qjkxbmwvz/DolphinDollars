@@ -11,7 +11,7 @@ try:
     import Tkinter as tk
 except ImportError:
     import tkinter as tk
-import tkinter.messagebox
+#import tkinter.messagebox
 import student_entry_screen
 
 
@@ -62,15 +62,14 @@ class LoginScreen(tk.Frame):
     def authenticate(self):
         '''Contacts the database to authenticate the employee.'''
         emp_id = self.employee_id_entry.get()
-        
+
         if not emp_id or not self.password_entry.get():
             tk.messagebox.showerror("Enter an ID+Password",
                                     "Please enter your credentials to log in.")
             return
 
         cursor = self.master.execute(
-            "SELECT AuthenticateEmployee({}, '{}');".format(self.employee_id_entry.get(),
-                                                            self.password_entry.get()))
+            "SELECT AuthenticateEmployee({}, '{}');".format(emp_id, self.password_entry.get()))
 
         for i in cursor:
             for j in i:
@@ -79,3 +78,4 @@ class LoginScreen(tk.Frame):
                 else:
                     tk.messagebox.showerror("Incorrect ID/Password",
                                             "Please check your credentials and try again.")
+                    return

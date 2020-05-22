@@ -11,7 +11,7 @@ class MainWindow(tk.Tk):
     '''The main window.'''
     def __init__(self, frame_class):
         tk.Tk.__init__(self)
-        
+
         db = mysql.connector.connect(
             host="brettmusser.cikeys.com",
             user="brettmus_StephenBerks",
@@ -20,7 +20,7 @@ class MainWindow(tk.Tk):
         )
 
         self.cursor = db.cursor()
-        
+
         self.geometry("600x450+650+150")
         self.minsize(1, 1)
         self.maxsize(1665, 1020)
@@ -32,7 +32,8 @@ class MainWindow(tk.Tk):
 
     def switch_frame(self, frame_class, string_to_pass=None):
         '''Switches from one screen to another.'''
-        new_frame = frame_class(self, string_to_pass)
+        new_frame = frame_class(self, string_to_pass) if string_to_pass is not None else \
+                    frame_class(self)
         if self.frame is not None:
             self.frame.destroy()
         self.frame = new_frame

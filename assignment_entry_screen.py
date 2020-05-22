@@ -7,7 +7,7 @@ try:
     import Tkinter as tk
 except ImportError:
     import tkinter as tk
-from tkcalendar import Calendar, DateEntry
+from tkcalendar import DateEntry
 import student_home_screen
 
 
@@ -41,7 +41,7 @@ class AssignmentEntryScreen(tk.Frame):
         label_4.place(relx=0.1, rely=0.5, anchor="e")
         label_4.configure(background="#ffffff", justify='right',
                           text='''Assignment Size:''')
-        
+
         self.cal = DateEntry(self, width=12, background='#ed1c24',
                              foreground='white', borderwidth=2)
         self.cal.place(relx=0.5, rely=0.333, anchor="center")
@@ -53,11 +53,11 @@ class AssignmentEntryScreen(tk.Frame):
         self.password_entry = tk.Entry(self)
         self.password_entry.place(relx=0.25, rely=0.578, height=23, relwidth=0.527)
         self.password_entry.configure(background="white", font="TkFixedFont")
-        
+
         self.submit_button = tk.Button(self)
         self.submit_button.place(relx=0.5, rely=0.833, height=50, width=150, anchor="center")
         self.submit_button.configure(background="#ed1c24", foreground="#ffffff",
-                               text='''Submit''', command=self.submit)
+                                     text='''Submit''', command=self.submit)
 
     def submit(self):
         '''Contacts the database to authenticate the employee.'''

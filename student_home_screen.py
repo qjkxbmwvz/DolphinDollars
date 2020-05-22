@@ -45,17 +45,17 @@ class StudentHomeScreen(tk.Frame):
         self.voucher_button = tk.Button(self)
         self.voucher_button.place(relx=0.5, rely=0.5, height=50, width=150, anchor="center")
         self.voucher_button.configure(background="#ed1c24", foreground="#ffffff",
-                               text='''Deposit Study Session Voucher''', wraplength="125")
+                                      text='''Deposit Study Session Voucher''', wraplength="125")
 
         self.prize_button = tk.Button(self)
         self.prize_button.place(relx=0.5, rely=0.667, height=50, width=150, anchor="center")
         self.prize_button.configure(background="#ed1c24", foreground="#ffffff",
-                               text='''Redeem for Prizes''')
+                                    text='''Redeem for Prizes''')
 
         self.back_button = tk.Button(self)
         self.back_button.place(relx=0.5, rely=0.833, height=50, width=150, anchor="center")
         self.back_button.configure(background="#ed1c24", foreground="#ffffff",
-                               text='''Done''', command=self.go_back)
+                                   text='''Done''', command=self.go_back)
 
     def assignment(self):
         '''Goes to the assignment submission screen.'''
