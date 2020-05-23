@@ -13,6 +13,7 @@ except ImportError:
     import tkinter as tk
 import student_entry_screen
 import assignment_entry_screen
+import study_session_entry_screen
 
 
 class StudentHomeScreen(tk.Frame):
@@ -46,7 +47,7 @@ class StudentHomeScreen(tk.Frame):
         self.voucher_button = tk.Button(self)
         self.voucher_button.place(relx=0.5, rely=0.5, height=50, width=150, anchor="center")
         self.voucher_button.configure(background="#ed1c24", foreground="#ffffff",
-                                      text='''Deposit Study Session Voucher''', wraplength="125")
+                                      text='''Deposit Study Session Voucher''', command=self.studySession, wraplength="125")
 
         self.prize_button = tk.Button(self)
         self.prize_button.place(relx=0.5, rely=0.667, height=50, width=150, anchor="center")
@@ -61,6 +62,10 @@ class StudentHomeScreen(tk.Frame):
     def assignment(self):
         '''Goes to the assignment submission screen.'''
         self.master.switch_frame(assignment_entry_screen.AssignmentEntryScreen,
+                                 "{},{}".format(self.emp_id, self.student_id))
+    def studySession(self):
+        '''Goes to the study session submission screen.'''
+        self.master.switch_frame(study_session_entry_screen.StudySessionEntryScreen,
                                  "{},{}".format(self.emp_id, self.student_id))
 
     def go_back(self):
