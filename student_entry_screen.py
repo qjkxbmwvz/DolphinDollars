@@ -18,10 +18,10 @@ import student_home_screen
 
 class StudentEntryScreen(tk.Frame):
     '''This class populates the window with entry screen stuff.'''
-    def __init__(self, master, student_id):
+    def __init__(self, master, emp_id):
         tk.Frame.__init__(self, master)
 
-        self.student_id = student_id
+        self.emp_id = emp_id
         self.configure(bg="white")
 
         font10 = "-family {Noto Sans} -size 18"
@@ -45,8 +45,7 @@ class StudentEntryScreen(tk.Frame):
                           disabledforeground="#ffffff", justify='right', text='''Student ID:''')
 
         self.student_id_entry = tk.Entry(self)
-        self.student_id_entry.place(relx=0.25, rely=0.489,
-                                    height=23, relwidth=0.527)
+        self.student_id_entry.place(relx=0.25, rely=0.489, height=23, relwidth=0.527)
         self.student_id_entry.configure(background="white", font="TkFixedFont")
 
         submit_button = tk.Button(self)
@@ -74,7 +73,8 @@ class StudentEntryScreen(tk.Frame):
         for i in cursor:
             for j in i:
                 if j == 1:
-                    self.master.switch_frame(student_home_screen.StudentHomeScreen, student_id)
+                    self.master.switch_frame(student_home_screen.StudentHomeScreen,
+                                             "{},{}".format(self.emp_id, student_id))
                 else:
                     tk.messagebox.showerror("Student ID Not Found",
                                             "Please check the entered ID and try again.")

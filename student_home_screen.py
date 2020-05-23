@@ -17,9 +17,10 @@ import assignment_entry_screen
 
 class StudentHomeScreen(tk.Frame):
     '''This class populates the window with student home screen stuff.'''
-    def __init__(self, master):
+    def __init__(self, master, ids):
         tk.Frame.__init__(self, master)
 
+        [self.emp_id, self.student_id] = ids.split(",")
         self.configure(bg="white")
 
         font10 = "-family {Noto Sans} -size 18"
@@ -59,8 +60,9 @@ class StudentHomeScreen(tk.Frame):
 
     def assignment(self):
         '''Goes to the assignment submission screen.'''
-        self.master.switch_frame(assignment_entry_screen.AssignmentEntryScreen)
+        self.master.switch_frame(assignment_entry_screen.AssignmentEntryScreen,
+                                 "{},{}".format(self.emp_id, self.student_id))
 
     def go_back(self):
         '''Returns to the student entry screen.'''
-        self.master.switch_frame(student_entry_screen.StudentEntryScreen)
+        self.master.switch_frame(student_entry_screen.StudentEntryScreen, self.emp_id)

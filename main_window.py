@@ -12,14 +12,14 @@ class MainWindow(tk.Tk):
     def __init__(self, frame_class):
         tk.Tk.__init__(self)
 
-        db = mysql.connector.connect(
+        db_ = mysql.connector.connect(
             host="brettmusser.cikeys.com",
             user="brettmus_StephenBerks",
             passwd="k,4i17Xl@]HG",
             database="brettmus_COMP420_DolphinDollarsProject"
         )
 
-        self.cursor = db.cursor()
+        self.cursor = db_.cursor()
 
         self.geometry("600x450+650+150")
         self.minsize(1, 1)
