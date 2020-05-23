@@ -98,8 +98,10 @@ class AssignmentEntryScreen(tk.Frame):
         for i in cursor:
             for j in i:
                 if j == 1:
+                    print("CALL AssignmentDeposit('{}', STR_TO_DATE('{}', '%m/%d/%Y'), '{}', '{}', {}, {})"
+                          .format(grade, date, size, course, self.student_id, self.emp_id))
                     self.master.execute(
-                        "AssignmentDeposit('{}', STR_TO_DATE('{}', '%m/%d/%Y'), '{}', '{}', {}, {})"
+                        "CALL AssignmentDeposit('{}', STR_TO_DATE('{}', '%m/%d/%Y'), '{}', '{}', {}, {})"
                         .format(grade, date, size, course, self.student_id, self.emp_id))
                     self.master.switch_frame(student_home_screen.StudentHomeScreen,
                                              "{},{}".format(self.emp_id, self.student_id))
